@@ -1,5 +1,1 @@
-Name | Phone number
----------------
-Jack Blank | 1231231234
-Jane Doe | 2342342345
-Sam Spaced | 3453453456
+null0
