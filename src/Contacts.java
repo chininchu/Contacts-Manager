@@ -2,6 +2,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,6 +15,17 @@ public class Contacts {
     public String name;
 
     public int phoneNumber;
+
+
+    // Constructor
+
+    public Contacts(String name, int phoneNumber) {
+
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+
+
+    }
 
 
     // Setters
@@ -39,37 +53,31 @@ public class Contacts {
         for (int i = 0; i < contactList.size(); i += 1) {
             System.out.println((i + 1) + ": " + contactList.get(i));
 
+
         }
 
-        return " ";
+        return "";
 
 
     }
 
-    public Path writeContacts(String Name, int phoneNumber) {
-
-//        Scanner sctest = new Scanner(System.in);
-//
-//        String userinput = sctest.next().toString();
+    public Path writeContacts() {
 
 
-        Path getContacts = Paths.get("src/data/contacts.txt");
-
-        Path newContact;
+        List<String> contactList = Arrays.asList(this.name, Integer.toString(this.phoneNumber));
 
         try {
-            newContact = Files.writeString(getContacts, this.name + this.phoneNumber);
-            System.out.println(newContact);
+//            Files.write(getContacts,contactList);
+
+            return Files.write(Paths.get("src/data/contacts.txt"), List.of(this.name + " " + "|" + " " + this.phoneNumber), StandardOpenOption.APPEND);
 
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        return newContact;
-
-
     }
+
 
     public static void displayMenu() {
 
@@ -82,6 +90,23 @@ public class Contacts {
 
 
     }
+
+    public static void addContact() {
+
+        // User adds a new name
+
+        System.out.println("Enter a name ");
+        Scanner sc = new Scanner(System.in);
+        String addName = sc.next();
+
+        // User adds a PhoneNumber
+
+        System.out.println("Enter a Number");
+        String newNumber = sc.next();
+
+
+    }
+
 
     public static void userInput() {
 
@@ -105,5 +130,7 @@ public class Contacts {
 
     }
 
-
 }
+
+
+
