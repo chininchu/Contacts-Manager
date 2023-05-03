@@ -8,6 +8,7 @@ import java.util.*;
 import static java.nio.file.Files.readAllBytes;
 
 public class Contacts {
+        static Scanner sc = new Scanner(System.in);
 
 
     public static void displayMenu() {
@@ -52,7 +53,7 @@ public class Contacts {
         // User adds a new name
 
         System.out.println("Enter a name ");
-        Scanner sc = new Scanner(System.in);
+
         String addName = sc.next();
 
         // User adds a PhoneNumber
@@ -77,7 +78,6 @@ public class Contacts {
 
 
         System.out.println("Enter the name of a Contact?");
-        Scanner sc = new Scanner(System.in);
         String userInput = sc.next();
 
         Path contactPath = Paths.get("src/data/contacts.txt");
@@ -109,7 +109,6 @@ public class Contacts {
 
 
         System.out.println("Enter the name of a Contact that you would like to delete");
-        Scanner sc = new Scanner(System.in);
         String userInput = sc.next();
 
         Path contactPath = Paths.get("src/data/contacts.txt");
@@ -140,7 +139,6 @@ public class Contacts {
 
     public static void userInput() {
 
-        Scanner sc = new Scanner(System.in);
         int userInput;
 
 
