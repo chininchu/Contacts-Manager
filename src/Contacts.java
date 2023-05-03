@@ -102,54 +102,91 @@ public class Contacts {
             throw new RuntimeException(e);
         }
 
+    }
+
+
+    public static void deleteContact() {
+
+
+        System.out.println("Enter the name of a Contact that you would like to delete");
+        Scanner sc = new Scanner(System.in);
+        String userInput = sc.next();
+
+        Path contactPath = Paths.get("src/data/contacts.txt");
+
+
+        try {
+            List<String> lines = Files.readAllLines(contactPath);
+
+            for (int i = 0; i < lines.size(); i++) {
+                String line = lines.get(i);
+
+                if (line.toLowerCase().contains(userInput.toLowerCase())) {
+                    lines.remove(line);
+
+                }
+
+            }
+
+            Files.write(contactPath, lines, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
 
 
-
-
-
     public static void userInput() {
 
         Scanner sc = new Scanner(System.in);
-        int userInput = sc.nextInt();
+        int userInput;
 
 
-        for (int i = 1; userInput <= 5; i++) {
+        while (true) {
+            displayMenu();
+            userInput = sc.nextInt();
+
 
             if (userInput == 1) {
 
                 getContacts();
                 System.out.println("   ");
-                displayMenu();
-                break;
 
 
             } else if (userInput == 2) {
 
                 addContact();
                 System.out.println("   ");
-                displayMenu();
-                break;
+
 
             } else if (userInput == 3) {
 
                 searchContact();
                 System.out.println("   ");
-                displayMenu();
-                break;
 
+
+            } else if (userInput == 4) {
+
+                deleteContact();
+                System.out.println("   ");
+
+
+            } else if (userInput == 5) {
+                System.out.println("Exiting Program");
+                break;
 
             }
 
 
         }
 
-
     }
 
 }
+
+
 
 
 
