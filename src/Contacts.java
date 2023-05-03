@@ -1,13 +1,11 @@
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
+import static java.nio.file.Files.readAllBytes;
 
 public class Contacts {
 
@@ -75,34 +73,41 @@ public class Contacts {
 
     }
 
-    public static String searchContact() {
+    public static void searchContact() {
 
 
         System.out.println("Enter the name of a Contact?");
         Scanner sc = new Scanner(System.in);
-        String search = sc.next();
+        String userInput = sc.next();
+
+        Path contactPath = Paths.get("src/data/contacts.txt");
 
 
-        String data = "";
         try {
-            data = new String(Files.readAllBytes(Paths.get("src/data/contacts.txt")));
+            List<String> lines = Files.readAllLines(contactPath);
+//            contactList = (ArrayList<String>) Files.readAllLines(contactPath);,
+
+            for (String line : lines) {
+
+//            System.out.println(contactList);
+
+                if (line.toLowerCase().contains(userInput.toLowerCase())) {
+
+                    System.out.println(line);
+
+                }
+            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        if(search.equalsIgnoreCase(data)){
-
-            System.out.println();
-
-        }
-
-        return data;
-
-
-
 
 
     }
+
+
+
 
 
     public static void userInput() {

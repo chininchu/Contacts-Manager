@@ -7,12 +7,7 @@ public class TestContactManager {
 
 
         Contacts.displayMenu();
-
-
-
         Contacts.userInput();
-
-
 
 
     }
