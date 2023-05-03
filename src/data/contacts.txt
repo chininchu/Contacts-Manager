@@ -1,28 +1,9 @@
-Name | Phone number
-------------------
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
-Andrew | 1234566
-Paul | 1234566
+Name       | Phone number |
+---------------------------
+Andrew | 3052139089
+Andrew | Chu
+Andrew | CHu
+Andrew | 489909099
+Andy | 290890900
+Andy | 123
+andy | 123

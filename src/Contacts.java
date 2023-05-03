@@ -1,3 +1,4 @@
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,31 +11,17 @@ import java.util.Scanner;
 
 public class Contacts {
 
-    // Contact and Phone Number properties
 
-    public String name;
+    public static void displayMenu() {
 
-    public int phoneNumber;
-
-
-    // Constructor
-
-    public Contacts(String name, int phoneNumber) {
-
-        this.name = name;
-        this.phoneNumber = phoneNumber;
+        System.out.println("1. View contacts.\n" +
+                "2. Add a new contact.\n" +
+                "3. Search a contact by name.\n" +
+                "4. Delete an existing contact.\n" +
+                "5. Exit.\n" +
+                "Enter an option (1, 2, 3, 4 or 5):\n");
 
 
-    }
-
-
-    // Setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public static String getContacts() {
@@ -61,35 +48,6 @@ public class Contacts {
 
     }
 
-    public Path writeContacts() {
-
-
-        List<String> contactList = Arrays.asList(this.name, Integer.toString(this.phoneNumber));
-
-        try {
-//            Files.write(getContacts,contactList);
-
-            return Files.write(Paths.get("src/data/contacts.txt"), List.of(this.name + " " + "|" + " " + this.phoneNumber), StandardOpenOption.APPEND);
-
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-
-    public static void displayMenu() {
-
-        System.out.println("1. View contacts.\n" +
-                "2. Add a new contact.\n" +
-                "3. Search a contact by name.\n" +
-                "4. Delete an existing contact.\n" +
-                "5. Exit.\n" +
-                "Enter an option (1, 2, 3, 4 or 5):\n");
-
-
-    }
 
     public static void addContact() {
 
@@ -105,6 +63,45 @@ public class Contacts {
         String newNumber = sc.next();
 
 
+        try {
+
+            Files.write(Paths.get("src/data/contacts.txt"), List.of(addName + " | " + newNumber), StandardOpenOption.APPEND);
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    public static String searchContact() {
+
+
+        System.out.println("Enter the name of a Contact?");
+        Scanner sc = new Scanner(System.in);
+        String search = sc.next();
+
+
+        String data = "";
+        try {
+            data = new String(Files.readAllBytes(Paths.get("src/data/contacts.txt")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        if(search.equalsIgnoreCase(data)){
+
+            System.out.println();
+
+        }
+
+        return data;
+
+
+
+
+
     }
 
 
@@ -118,7 +115,24 @@ public class Contacts {
 
             if (userInput == 1) {
 
-                System.out.println(getContacts());
+                getContacts();
+                System.out.println("   ");
+                displayMenu();
+                break;
+
+
+            } else if (userInput == 2) {
+
+                addContact();
+                System.out.println("   ");
+                displayMenu();
+                break;
+
+            } else if (userInput == 3) {
+
+                searchContact();
+                System.out.println("   ");
+                displayMenu();
                 break;
 
 

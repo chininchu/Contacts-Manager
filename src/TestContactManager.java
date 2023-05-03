@@ -1,3 +1,5 @@
+import java.nio.file.Path;
+
 public class TestContactManager {
 
 
@@ -5,11 +7,11 @@ public class TestContactManager {
 
 
         Contacts.displayMenu();
+
+
+
         Contacts.userInput();
 
-        System.out.println(Contacts.getContacts());
-
-        Contacts.addContact();
 
 
 
